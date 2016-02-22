@@ -1,64 +1,85 @@
-from os import sep
 from getpass import getuser
-from html2libreoffice import BASE_TEMPLATE, BODY_TEMPLATE, FOOTER_TEMPLATE,\
-                             HEAD_TEMPLATE, HEADER_TEMPLATE, DEFAULT_STYLE
+from html2libreoffice import BASE_TEMPLATE, HEAD_TEMPLATE, DEFAULT_STYLE
 
 
 class Document:
 
     def __init__(self):
         # ----- Instance sections
-        self._style = ''
-        self._head = ''
-        self._header = ''
-        self._body = ''
-        self._footer = ''
+        self._style = False
+        self._head = False
+        self._header = False
+        self._body = False
+        self._footer = False
         self._complete_document = ''
 
-    def set_style(self, style):
+    @property
+    def style(self):
+        return self._style
+
+    @style.setter
+    def style(self, style=False):
         self._style = style
 
-    def set_head(self, title='', author='', created='', changedby='',
-                 changed=''):
-        head = HEAD_TEMPLATE
-        head = head.replace('{{title}}', title)
-        if not author:
-            author = getuser()
-        head = head.replace('{{author}}', author)
-        head = head.replace('{{created}}', created)
-        if not changedby:
-            changedby = getuser()
-        head = head.replace('{{changedby}}', changedby)
-        head = head.replace('{{changed}}', changed)
+    @property
+    def head(self):
+        return self._head
+
+    @head.setter
+    def head(self, head=False):
         self._head = head
         return head
 
-    def set_header(self, content=''):
-        header = HEADER_TEMPLATE.replace(
-            '{{content}}', content)
+    @property
+    def header(self):
+        return self._header
+
+    @header.setter
+    def header(self, header=False):
         self._header = header
         return header
 
-    def set_body(self, content=''):
-        body = BODY_TEMPLATE.replace(
-            '{{content}}', content)
+    @property
+    def body(self):
+        return self._body
+
+    @body.setter
+    def body(self, body=False):
         self._body = body
         return body
 
-    def set_footer(self, content=''):
-        footer = FOOTER_TEMPLATE.replace(
-            '{{content}}', content)
+    @property
+    def footer(self):
+        return self._footer
+
+    @footer.setter
+    def footer(self, footer=False):
         self._footer = footer
         return footer
 
     def generate(self):
         # ----- Fill css style in the head
-        head = self._head
-        head = head.replace('{{style}}', self._style or DEFAULT_STYLE)
+        head = ''
+        if self.head:
+            if self.style:
+                style = self.style.content
+            else:
+                style = DEFAULT_STYLE
+            head = self.head.complete_content.replace('{{style}}', style)
         # ----- Fill header and footer in the body
-        body = self._body
-        body = body.replace('{{header}}', self._header)
-        body = body.replace('{{footer}}', self._footer)
+        body = ''
+        if self.body:
+            body = self.body.complete_content
+            if self.header:
+                header = self.header.complete_content
+            else:
+                header = ''
+            body = body.replace('{{header}}', header)
+            if self.footer:
+                footer = self.footer.complete_content
+            else:
+                footer = ''
+            body = body.replace('{{footer}}', footer)
         # ----- Create the complete document content
         complete_document = BASE_TEMPLATE
         complete_document = complete_document.replace(
@@ -69,6 +90,9 @@ class Document:
         return complete_document
 
     def save(self, filepath=''):
+        # ----- Generate complete file content
+        self.generate()
+        # ----- Savefile content on disk
         document_file = open(filepath, 'w')
         document_file.write(self._complete_document)
         document_file.close()

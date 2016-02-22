@@ -13,8 +13,8 @@ HEAD_TEMPLATE = '''
     <meta name="generator" content="HTML2LibreOffice"/>
     <meta name="author" content="{{author}}"/>
     <meta name="created" content="{{created}}"/>
-    <meta name="changedby" content="{{changedby}}"/>
-    <meta name="changed" content="{{changed}}"/>
+    <meta name="changedby" content="{{author}}"/>
+    <meta name="changed" content="{{created}}"/>
     <style type="text/css">
         {{style}}
     </style>

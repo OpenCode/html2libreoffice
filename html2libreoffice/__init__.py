@@ -1,6 +1,7 @@
 from .style import *
 from .template import *
 from .tag import *
+from .section import Body, Footer, Head, Header, Style
 from .document import Document
 
 __author__ = "Francesco Apruzzese <cescoap@gmail.com>"
