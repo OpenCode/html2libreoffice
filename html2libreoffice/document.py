@@ -28,7 +28,6 @@ class Document:
     @head.setter
     def head(self, head=False):
         self._head = head
-        return head
 
     @property
     def header(self):
@@ -37,7 +36,6 @@ class Document:
     @header.setter
     def header(self, header=False):
         self._header = header
-        return header
 
     @property
     def body(self):
@@ -46,7 +44,6 @@ class Document:
     @body.setter
     def body(self, body=False):
         self._body = body
-        return body
 
     @property
     def footer(self):
@@ -55,7 +52,6 @@ class Document:
     @footer.setter
     def footer(self, footer=False):
         self._footer = footer
-        return footer
 
     def generate(self):
         # ----- Fill css style in the head
