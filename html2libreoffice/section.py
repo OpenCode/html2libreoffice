@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# © 2016 Francesco Apruzzese <cescoap@gmail.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 from getpass import getuser
 from html2libreoffice import BODY_TEMPLATE, FOOTER_TEMPLATE, HEAD_TEMPLATE,\
                              HEADER_TEMPLATE,\

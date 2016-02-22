@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# © 2016 Francesco Apruzzese <cescoap@gmail.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 BASE_TEMPLATE = '''
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
