@@ -7,5 +7,5 @@ def page_count():
 
 
 def new_page():
-    return '<p style="page-break-before: always">'
+    return '<p style="page-break-before: always" />'
 
