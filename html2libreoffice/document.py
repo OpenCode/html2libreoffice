@@ -1,5 +1,4 @@
-from getpass import getuser
-from html2libreoffice import BASE_TEMPLATE, HEAD_TEMPLATE, DEFAULT_STYLE
+from html2libreoffice import BASE_TEMPLATE, DEFAULT_STYLE
 
 
 class Document:

@@ -33,7 +33,6 @@ class Head:
     @title.setter
     def title(self, title):
         self._title = title
-        return title
 
     @property
     def author(self):
@@ -42,7 +41,6 @@ class Head:
     @author.setter
     def author(self, author):
         self._author = author
-        return author
 
     @property
     def complete_content(self):
@@ -59,6 +57,7 @@ class Head:
 class Style(Section):
 
     def __init__(self, content=''):
+        Section.__init__(self, content)
         if not content:
             content = DEFAULT_STYLE
         self._content = content
