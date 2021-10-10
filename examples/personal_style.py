@@ -21,7 +21,7 @@ body = Body('<p>Page 1</p>'
 doc.body = body
 style = Style('''
 @page { margin: 4cm }
-p { margin-bottom: 0.25cm; color: #000000; line-height: 120% }
+p { margin-bottom: 0.30cm; color: #000; line-height: 120% }
 ''')
 doc.style = style
-doc.save('/tmp/example.html')
+doc.save('./tmp/example.html')
